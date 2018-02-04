@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="common/taglibs.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,23 +14,23 @@
     <title>CRM-客户关系管理系统</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${ctx}/static/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="static/js/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="${ctx}/static/js/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="static/css/sb-admin-2.css" rel="stylesheet">
+    <link href="${ctx}/static/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="static/js/morris/morris.css">
+    <link href="${ctx}/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="${ctx}/static/js/morris/morris.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="static/js/html5shiv.js"></script>
-    <script src="static/js/respond.min.js"></script>
+    <script src="${ctx}/static/js/html5shiv.js"></script>
+    <script src="${ctx}/static/js/respond.min.js"></script>
     <![endif]-->
 
 </head>
@@ -69,18 +70,18 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
-<script src="static/js/jquery.min.js"></script>
+<script src="${ctx}/static/js/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="static/js/bootstrap.min.js"></script>
+<script src="${ctx}/static/js/bootstrap.min.js"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
-<script src="static/js/metisMenu/metisMenu.min.js"></script>
+<script src="${ctx}/static/js/metisMenu/metisMenu.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="static/js/sb-admin-2.js"></script>
-<script src="static/js/morris/raphael-min.js"></script>
-<script src="static/js/morris/morris.min.js"></script>
+<script src="${ctx}/static/js/sb-admin-2.js"></script>
+<script src="${ctx}/static/js/morris/raphael-min.js"></script>
+<script src="${ctx}/static/js/morris/morris.min.js"></script>
 <script>
     $(function(){
         Morris.Bar({

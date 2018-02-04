@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="../common/taglibs.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,24 +14,24 @@
     <title>CRM-客户关系管理系统</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${ctx}/static/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="static/js/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="${ctx}/static/js/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="static/css/sb-admin-2.css" rel="stylesheet">
+    <link href="${ctx}/static/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="${ctx}/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" href="static/js/datatables/media/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="${ctx}/static/js/datatables/media/css/dataTables.bootstrap.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="static/js/html5shiv.js"></script>
-    <script src="static/js/respond.min.js"></script>
+    <script src="${ctx}/static/js/html5shiv.js"></script>
+    <script src="${ctx}/static/js/respond.min.js"></script>
     <![endif]-->
 
 </head>
@@ -218,18 +219,18 @@
 
 
 <!-- jQuery -->
-<script src="static/js/jquery.min.js"></script>
+<script src="${ctx}/static/js/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="static/js/bootstrap.min.js"></script>
+<script src="${ctx}/static/js/bootstrap.min.js"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
-<script src="static/js/metisMenu/metisMenu.min.js"></script>
+<script src="${ctx}/static/js/metisMenu/metisMenu.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="static/js/sb-admin-2.js"></script>
-<script src="static/js/datatables/media/js/jquery.dataTables.min.js"></script>
-<script src="static/js/datatables/media/js/dataTables.bootstrap.min.js"></script>
+<script src="${ctx}/static/js/sb-admin-2.js"></script>
+<script src="${ctx}/static/js/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="${ctx}/static/js/datatables/media/js/dataTables.bootstrap.min.js"></script>
 <script>
     $(function(){
 
@@ -302,7 +303,7 @@
             $("#newUserModal").modal('show');
         });
         $("#saveBtn").click(function(){
-            $.post("account/new",$("#newUserForm").serialize())
+            $.post("${ctx}/account/new",$("#newUserForm").serialize())
                     .done(function(result){
                         if("success" == result) {
                             $("#newUserForm")[0].reset();
@@ -319,7 +320,7 @@
         $(document).delegate(".delLink","click",function(){
             var id = $(this).attr("data-id");
             if(confirm("确定要删除该数据吗?")) {
-                $.post("account/del",{"id":id}).done(function(result){
+                $.post("${ctx}/account/del",{"id":id}).done(function(result){
                     if("success" == result) {
                         dt.ajax.reload();
                     }
@@ -334,7 +335,7 @@
         $(document).delegate(".editLink","click",function(){
             $("#editUserForm")[0].reset();
             var id = $(this).attr("data-id");
-            $.get("account/user.json",{"id":id}).done(function(result){
+            $.get("${ctx}/account/user.json",{"id":id}).done(function(result){
                 $("#id").val(result.id);
                 $("#username").val(result.username);
                 $("#tel").val(result.tel);
@@ -366,7 +367,7 @@
 
         $("#editBtn").click(function(){
 
-            $.post("account/edit",$("#editUserForm").serialize()).done(function(result){
+            $.post("${ctx}/account/edit",$("#editUserForm").serialize()).done(function(result){
                 if(result == "success") {
                     $("#editUserModal").modal("hide");
                     dt.ajax.reload();

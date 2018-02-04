@@ -20,9 +20,9 @@
     
     <!--<mvc:annotation-driven/>-->
     <!--开启spring默认servlet访问注解 -->
-    <mvc:annotation-driven></mvc:annotation-driven>
+    <mvc:annotation-driven/>
     <!-- 对静态资源文件的访问  加入这个必须添加上annotation-driven-->
-    <mvc:default-servlet-handler></mvc:default-servlet-handler>
+    <!--<mvc:default-servlet-handler></mvc:default-servlet-handler>-->
     <!--静态资源配置-->
     <mvc:resources mapping="/static/**" location="/static/"/>
 

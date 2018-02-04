@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../common/taglibs.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,23 +15,23 @@
     <title>CRM-客户关系管理系统</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${ctx}/static/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="static/js/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="${ctx}/static/js/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="static/css/sb-admin-2.css" rel="stylesheet">
-    <link rel="stylesheet" href="static/css/timeline.css">
+    <link href="${ctx}/static/css/sb-admin-2.css" rel="stylesheet">
+    <link rel="stylesheet" href="${ctx}/static/css/timeline.css">
 
     <!-- Custom Fonts -->
-    <link href="static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="${ctx}/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="static/js/html5shiv.js"></script>
-    <script src="static/js/respond.min.js"></script>
+    <script src="${ctx}/static/js/html5shiv.js"></script>
+    <script src="${ctx}/static/js/respond.min.js"></script>
     <![endif]-->
     <style>
         .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
@@ -268,7 +268,7 @@
                 <h4 class="modal-title">新增跟进记录</h4>
             </div>
             <div class="modal-body">
-                <form action="customer/progress/new" method="post" id="newForm" enctype="multipart/form-data">
+                <form action="${ctx}/customer/progress/new" method="post" id="newForm" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>客户</label>
                         <input type="hidden" value="${customer.id}" name="custid">
@@ -303,16 +303,16 @@
 </div><!-- /.modal -->
 
 <!-- jQuery -->
-<script src="static/js/jquery.min.js"></script>
+<script src="${ctx}/static/js/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="static/js/bootstrap.min.js"></script>
+<script src="${ctx}/static/js/bootstrap.min.js"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
-<script src="static/js/metisMenu/metisMenu.min.js"></script>
+<script src="${ctx}/static/js/metisMenu/metisMenu.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="static/js/sb-admin-2.js"></script>
+<script src="${ctx}/static/js/sb-admin-2.js"></script>
 <script>
     $(function () {
 
@@ -328,7 +328,7 @@
         //删除客户
         $("#delLink").click(function () {
             if (confirm("删除客户后，客户资料和跟进记录会全部删除，确定吗")) {
-                window.location.href = "customer/del/${customer.id}";
+                window.location.href = "${ctx}/customer/del/${customer.id}";
             }
         });
 
@@ -336,7 +336,7 @@
         //公开客户
         $("#publicCustomer").click(function () {
             if (confirm("客户公开后，所有的用户都可以看到该客户的信息,确定吗")) {
-                $.post("customer/public/${customer.id}").done(function (result) {
+                $.post("${ctx}/customer/public/${customer.id}").done(function (result) {
                     if (result.state != "success") {
                         alert(result.message);
                     } else {
@@ -355,12 +355,12 @@
         $("#tranBtn").click(function () {
             var userId = $("#userid").val();
             if (userId) {
-                $.post("customer/tran/${customer.id}/" + userId).done(function (result) {
+                $.post("${ctx}/customer/tran/${customer.id}/" + userId).done(function (result) {
                     if (result.state != "success") {
                         alert(result.message);
                     } else {
                         alert("转交成功");
-                        window.location.href = "/customer";
+                        window.location.href = "${ctx}/customer";
                     }
                 }).fail(function () {
                     alert("操作异常");
@@ -376,7 +376,7 @@
         $(".ckTask").click(function(){
             var $this = $(this);
             var id = $this.attr("rel");
-            $.post("customer/change/taskstate",{"taskId":id,"state":"true"}).done(function(result){
+            $.post("${ctx}/customer/change/taskstate",{"taskId":id,"state":"true"}).done(function(result){
                 if(result == "success") {
                     $this.parent().remove();
                 }
